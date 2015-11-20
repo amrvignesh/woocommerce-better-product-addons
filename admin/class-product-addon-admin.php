@@ -12,7 +12,7 @@ class Product_Addon_Admin {
 	 * @return void
 	 */
 	public function __construct() {
-		add_action( 'woocommerce_admin_css', array( $this, 'styles' ) );
+		add_action( 'woocommerce_admin_css', array( $this, 'stylesscripts' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 9 );
 		add_filter( 'woocommerce_screen_ids', array( $this, 'add_screen_id' ) );
 		add_action( 'woocommerce_product_write_panel_tabs', array( $this, 'tab' ) );
@@ -45,8 +45,9 @@ class Product_Addon_Admin {
 	 * @access public
 	 * @return void
 	 */
-	public function styles() {
+	public function stylesscripts() {
     	wp_enqueue_style( 'woocommerce_product_addons_css', plugins_url( basename( dirname( dirname( __FILE__ ) ) ) ) . '/assets/css/admin.css' );
+    	wp_enqueue_script( 'jquery_chosen_js', plugin_dir_url( __FILE__ ) . '../assets/js/chosen.jquery.min.js', array(), '1.0' );
     }
 
 	/**
